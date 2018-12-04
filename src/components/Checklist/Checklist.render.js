@@ -16,6 +16,7 @@ type Props = {
 const Checklist = ({ checklistItems }: Props) => (
   <CardsList
     cards={checklistItems.toJS()}
+    keyExtractor={id => id}
     renderItem={({ item }) => <ChecklistItem checklistItemID={item} />}
     bottomItem={{
       text: 'General.NewItem',
