@@ -2,16 +2,19 @@
 
 import React from 'react';
 import HeaderWithContent from '@cajacko/lib/components/Layout/HeaderWithContent';
-import { Span } from '@cajacko/lib/components/UI';
+import CardsList from '@cajacko/lib/components/Cards/List';
 
-const Example = () => (
+/**
+ * The home scene
+ */
+const SceneHome = () => (
   <HeaderWithContent
     header={{
       title: 'General.Header',
     }}
   >
-    <Span>Example</Span>
+    <CardsList cards={[{ text: { _textFromConst: 'Hello' } }]} />
   </HeaderWithContent>
 );
 
-export default Example;
+export default SceneHome;

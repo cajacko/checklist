@@ -1,5 +1,5 @@
 // @flow
 
-import SceneExample from './Example';
+import SceneHome from './Home';
 
-export { SceneExample };
+export { SceneHome };
