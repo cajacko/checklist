@@ -1,5 +1,6 @@
 {
   "General": {
-    "Header": "Checklist"
+    "Header": "Checklist",
+    "NewItem": "Add an item"
   }
 }
