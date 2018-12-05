@@ -4,6 +4,7 @@ import makeActionCreator from '@cajacko/lib/utils/makeActionCreator';
 import uuid from '@cajacko/lib/utils/uuid';
 
 export const SAVE_CHECKLIST_ITEM = 'SAVE_CHECKLIST_ITEM';
+export const DELETE_CHECKLIST_ITEM = 'DELETE_CHECKLIST_ITEM';
 
 export const saveChecklistItem = makeActionCreator(
   SAVE_CHECKLIST_ITEM,
@@ -19,4 +20,9 @@ export const saveChecklistItem = makeActionCreator(
 
     return checklistItem;
   }
+);
+
+export const deleteChecklistItem = makeActionCreator(
+  DELETE_CHECKLIST_ITEM,
+  'id'
 );

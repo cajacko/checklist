@@ -2,12 +2,14 @@
 
 import React from 'react';
 import TextArea from '@cajacko/lib/components/Forms/TextArea';
+import { TRASH, CHECK } from '@cajacko/lib/config/icons';
 import HeaderWithContent from '@cajacko/lib/components/Layout/HeaderWithContent';
 
 type Props = {
   text: string,
   onChange: string => void,
   onSubmit: () => void,
+  onDelete: () => void,
   goBack: () => void,
 };
 
@@ -15,14 +17,28 @@ type Props = {
  * The home scene
  */
 const ChecklistItem = ({
-  text, onChange, onSubmit, goBack,
+  text,
+  onChange,
+  onSubmit,
+  goBack,
+  onDelete,
 }: Props) => (
   <HeaderWithContent
     header={{
       back: goBack,
-      title: 'ChecklistItem.Header.New',
-      rightText: 'General.Done',
-      rightAction: onSubmit,
+      useCloseIconForBack: true,
+      rightButtons: [
+        {
+          key: 'delete',
+          icon: TRASH,
+          action: onDelete,
+        },
+        {
+          key: 'done',
+          icon: CHECK,
+          action: onSubmit,
+        },
+      ],
     }}
   >
     <TextArea
