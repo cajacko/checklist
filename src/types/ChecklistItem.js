@@ -1,5 +1,7 @@
 // @flow
 
+import { Record } from 'immutable';
+
 export type ChecklistItemID = string;
 
 export type ChecklistItem = {
@@ -13,3 +15,10 @@ export type ChecklistItem = {
 export type ImmutableChecklistItems = {
   toJS: () => Array<ChecklistItem>,
 };
+
+export const ChecklistItemRecord = Record({
+  id: null,
+  text: '',
+  dateCreated: null,
+  dateLastModified: null,
+});

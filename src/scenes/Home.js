@@ -2,7 +2,7 @@
 
 import React from 'react';
 import HeaderWithContent from '@cajacko/lib/components/Layout/HeaderWithContent';
-import Checklist from '../components/Checklist';
+import Checklist from '../components/Checklist/List';
 
 /**
  * The home scene

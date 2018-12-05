@@ -2,7 +2,7 @@
 
 import { createSelector } from 'reselect';
 import { connect } from '@cajacko/lib/lib/react-redux';
-import Checklist from './Checklist.render';
+import List from './List.component';
 
 const selector = createSelector(
   ({ checklists }, { checklistID }) => checklists.get(checklistID),
@@ -11,4 +11,4 @@ const selector = createSelector(
 
 export const mapStateToProps = selector;
 
-export default connect(mapStateToProps)(Checklist);
+export default connect(mapStateToProps)(List);

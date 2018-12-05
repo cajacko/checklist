@@ -1,6 +1,13 @@
 {
   "General": {
     "Header": "Checklist",
-    "NewItem": "Add an item"
+    "NewItem": "Add an item",
+    "Done": "Done"
+  },
+  "ChecklistItem": {
+    "Header": {
+      "New": "Add a new item"
+    },
+    "Placeholder": "New task of some sort"
   }
 }
