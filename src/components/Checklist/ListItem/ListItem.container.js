@@ -1,15 +1,33 @@
 // @flow
 
-import { createSelector } from 'reselect';
 import { connect } from '@cajacko/lib/lib/react-redux';
 import ListItem from './ListItem.render';
+import { setChecked } from '../../../store/checklists/actions';
 
-const selector = createSelector(
-  ({ checklistItems }, { checklistItemID }) =>
-    checklistItems.get(checklistItemID),
-  checklistItem => checklistItem.toJS()
-);
+/**
+ * Get the checklist data from the store
+ */
+const mapStateToProps = (
+  { checklistItems, checklists },
+  { checklistID, checklistItemID }
+) => ({
+  checked: checklists.getIn([
+    checklistID,
+    'checklistItems',
+    checklistItemID,
+    'checked',
+  ]),
+  ...checklistItems.get(checklistItemID).toJS(),
+});
 
-export const mapStateToProps = selector;
+/**
+ * Wrap some funcs in redux dispatch
+ */
+const mapDispatchToProps = dispatch => ({
+  toggleChecked: (id, checked) => () => dispatch(setChecked(id, checked)),
+});
 
-export default connect(mapStateToProps)(ListItem);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ListItem);

@@ -8,5 +8,8 @@
       "New": "Add a new item"
     },
     "Placeholder": "New task of some sort"
+  },
+  "Checklist": {
+    "Reset": "Reset"
   }
 }

@@ -6,38 +6,45 @@ import {
   SAVE_CHECKLIST_ITEM,
   DELETE_CHECKLIST_ITEM,
 } from '../checklistItems/actions';
+import { SET_CHECKED, RESET_CHECKLIST } from './actions';
 
 const initialState = fromJS({
   'checklist-1': {
     id: 'checklist-1',
     title: 'Checklist title',
-    checklistItems: ['id-1'],
+    checklistItems: {},
   },
 });
 
 export default createReducer(initialState, {
   [SAVE_CHECKLIST_ITEM]: (state, { id }) => {
-    const location = ['checklist-1', 'checklistItems'];
+    const location = ['checklist-1', 'checklistItems', id];
 
-    let checklistItems = state.getIn(location);
+    if (state.hasIn(location)) return state;
 
-    // Don't add if it already exists
-    if (checklistItems.includes(id)) return state;
-
-    checklistItems = checklistItems.push(id);
-
-    return state.setIn(location, checklistItems);
+    return state.setIn(
+      location,
+      fromJS({
+        checked: false,
+      })
+    );
   },
   [DELETE_CHECKLIST_ITEM]: (state, { id }) => {
-    const location = ['checklist-1', 'checklistItems'];
-
-    const checklistItems = state.getIn(location);
-
-    const index = checklistItems.indexOf(id);
+    const location = ['checklist-1', 'checklistItems', id];
 
     // Do nothing if the checklist does not have it
-    if (index === -1) return state;
+    if (!state.hasIn(location)) return state;
 
-    return state.deleteIn(location.concat(index), id);
+    return state.deleteIn(location);
+  },
+  [SET_CHECKED]: (state, { id, checked }) =>
+    state.setIn(['checklist-1', 'checklistItems', id, 'checked'], checked),
+  [RESET_CHECKLIST]: (state, { id }) => {
+    const location = [id, 'checklistItems'];
+    let checklistItems = state.getIn(location);
+
+    checklistItems = checklistItems.map(val => val.set('checked', false));
+
+    return state.setIn(location, checklistItems);
   },
 });

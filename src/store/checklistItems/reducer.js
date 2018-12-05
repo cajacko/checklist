@@ -6,13 +6,7 @@ import { fromJS } from 'immutable';
 import { SAVE_CHECKLIST_ITEM, DELETE_CHECKLIST_ITEM } from './actions';
 import { ReduxChecklistItemRecord } from '../../types/ChecklistItem';
 
-const initialState = fromJS({
-  'id-1': {
-    id: 'id-1',
-    text: 'I am a checklist item',
-    isOnline: true,
-  },
-});
+const initialState = fromJS({});
 
 export default createReducer(initialState, {
   [SAVE_CHECKLIST_ITEM]: (state, {

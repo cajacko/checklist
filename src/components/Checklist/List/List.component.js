@@ -8,6 +8,8 @@ import type { ReactRouter } from '../../../types/general';
 
 type Props = ReactRouter & {
   checklistItems: ImmutableChecklistItems,
+  checklistID: string,
+  onReset: () => void,
 };
 
 type State = {};
@@ -25,7 +27,12 @@ class ListComponent extends PureComponent<Props, State> {
    */
   render() {
     return (
-      <List checklistItems={this.props.checklistItems} addItem={this.addItem} />
+      <List
+        checklistItems={this.props.checklistItems}
+        addItem={this.addItem}
+        checklistID={this.props.checklistID}
+        onReset={this.props.onReset}
+      />
     );
   }
 }
