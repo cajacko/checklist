@@ -17,6 +17,10 @@ export default createReducer(initialState, {
     const location = ['checklist-1', 'checklistItems'];
 
     let checklistItems = state.getIn(location);
+
+    // Don't add if it already exists
+    if (checklistItems.includes(id)) return state;
+
     checklistItems = checklistItems.push(id);
 
     return state.setIn(location, checklistItems);

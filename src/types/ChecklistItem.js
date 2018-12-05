@@ -16,9 +16,16 @@ export type ImmutableChecklistItems = {
   toJS: () => Array<ChecklistItem>,
 };
 
-export const ChecklistItemRecord = Record({
+const checklistItemRecord = {
   id: null,
   text: '',
   dateCreated: null,
   dateLastModified: null,
+};
+
+export const ChecklistItemRecord = Record(checklistItemRecord);
+
+export const ReduxChecklistItemRecord = Record({
+  isOnline: false,
+  ...checklistItemRecord,
 });

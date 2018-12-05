@@ -2,16 +2,27 @@
 
 import React from 'react';
 import CardsListItem from '@cajacko/lib/components/Cards/ListItem';
+import withRouter from '@cajacko/lib/components/HOCs/withRouter';
+import type { ReactRouter } from '../../../types/general';
 
-type Props = {
+type Props = ReactRouter & {
+  id: string,
   text: string,
 };
 
+const action = (push, id) => () => push(`/checklist-item/${id}`);
+
 /**
- * The home scene
+ * A checklist item component
  */
-const ListItem = ({ text, ...props }: Props) => (
-  <CardsListItem text={{ _textFromConst: text }} {...props} />
+const ListItem = ({
+  text, id, history: { push }, ...props
+}: Props) => (
+  <CardsListItem
+    text={{ _textFromConst: text }}
+    action={action(push, id)}
+    {...props}
+  />
 );
 
-export default ListItem;
+export default withRouter(ListItem);
