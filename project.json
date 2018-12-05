@@ -8,7 +8,7 @@
   "authorEmail": "contact@charliejackson.com",
   "license": "MIT",
   "templates": {
-    "app": {
+    "main-app": {
       "entryFile": "src/appEntry.js",
       "name": "checklist",
       "displayName": "Check",
