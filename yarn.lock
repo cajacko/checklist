@@ -677,10 +677,10 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@cajacko/lib@4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@cajacko/lib/-/lib-4.0.0.tgz#d8aa986a630041819f7f71af2ab264cb6134756f"
-  integrity sha512-ldcbpGSHctB583WOHPOa3XBlGdkvnpe7RQKghczkQdVD+YRDTyzK2iORp3Q7rcEZzmfU3FAEfgIzSsXQUDPv3w==
+"@cajacko/lib@4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@cajacko/lib/-/lib-4.0.1.tgz#95c55670566f183b0c8761b3473672a57a2a64ae"
+  integrity sha512-Idk9GeeA/yRHpdNC595KWhbgVZ9HcIESlVg3qf4mFEq11+Rh5UzsIIWznuQ3cH88aA2rX/Gi8SXwz6LwDpcxAA==
   dependencies:
     apollo-server-express "2.0.4"
     babel-cli "6.26.0"
@@ -721,10 +721,10 @@
     reselect "3.0.1"
     styled-components "3.3.3"
 
-"@cajacko/template-utils@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@cajacko/template-utils/-/template-utils-1.0.0.tgz#a572bab79cb7ea434785c7f744f9a3e24a466abe"
-  integrity sha512-kkbdLnV1r7JM/Na8z3E7gCrDc+f+43JWne8xZkmOWndVZi4ghzE+mfMzzqdTrN9hrSDIM8pb3H8A/D+SpApMcg==
+"@cajacko/template-utils@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@cajacko/template-utils/-/template-utils-1.1.0.tgz#c97ac560ed8cfc379c85246021c8fbcefd66acd7"
+  integrity sha512-NjRhZxbbFg1KTZtF2M/j4Nrpy6bjeQZofdho7Ax2x/UzTfLQWt/gh+DwqOTxd7udFo3XCKUp9zdu3U/qJx+MQg==
   dependencies:
     chalk "^2.4.1"
     commander "^2.17.1"
@@ -734,18 +734,19 @@
     is-git-repository "^1.1.1"
     jimp "^0.5.3"
     lodash "^4.17.10"
+    node-fetch "^2.3.0"
     react-dev-utils "^5.0.2"
     semver "^5.5.1"
     simple-git "^1.96.0"
     watch "^1.0.2"
 
-"@cajacko/template@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@cajacko/template/-/template-1.0.0.tgz#ba629950baf2cfae7cc913dc83b28314c6772444"
-  integrity sha512-S+UX17TJp5yBlDKJAFfs+yPO8vqib20F3eI1yVPKJDqGA96iLeKvok53XHrsQGy+Z86kgjl0ziP7H0AaKiIrlA==
+"@cajacko/template@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@cajacko/template/-/template-1.1.1.tgz#7046465327f43168af8b156511b3b4f383c5f921"
+  integrity sha512-/mUodePj4CDdjjMLv0dtxyfEprOBODFWdr3WNUtRAGGAn9jOOAuwLfiFpQZgPy3eiPYq2yHR0D9Q3COkrhckEw==
   dependencies:
     "@babel/polyfill" "^7.0.0"
-    "@cajacko/template-utils" "^1.0.0"
+    "@cajacko/template-utils" "^1.1.0"
     babel-cli "^6.26.0"
     babel-eslint "8.2.2"
     babel-plugin-transform-object-rest-spread "^6.26.0"
@@ -7696,7 +7697,7 @@ node-fetch@^1.0.1:
     encoding "^0.1.11"
     is-stream "^1.0.1"
 
-node-fetch@^2.1.2, node-fetch@^2.2.0:
+node-fetch@^2.1.2, node-fetch@^2.2.0, node-fetch@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.3.0.tgz#1a1d940bbfb916a1d3e0219f037e89e71f8c5fa5"
   integrity sha512-MOd8pV3fxENbryESLgVIeaGKrdl+uaYhCSSVkjeOb/31/njTpcis5aWfdqgNlHIrKOLRbMnfPINPOML2CIFeXA==
