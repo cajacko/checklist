@@ -81,6 +81,6 @@
   },
   "dependencies": {
     "@cajacko/lib": "4.0.1",
-    "@cajacko/template": "1.1.1"
+    "@cajacko/template": "1.1.2"
   }
 }
