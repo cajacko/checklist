@@ -1,0 +1,15 @@
+{
+  "General": {
+    "Header": "Checklist",
+    "NewItem": "Add an item"
+  },
+  "ChecklistItem": {
+    "Header": {
+      "New": "Add a new item"
+    },
+    "Placeholder": "New task of some sort"
+  },
+  "Checklist": {
+    "Reset": "Reset"
+  }
+}
