@@ -13,6 +13,8 @@ type Props = {
   addItem: () => void,
   checklistID: string,
   onReset: () => void,
+  goBack: () => void,
+  title: string,
 };
 
 const selector = createSelector(
@@ -31,11 +33,17 @@ const renderItem = (checklistID: string) => ({ item }: { item: string }) => (
  * The checklist
  */
 const List = ({
-  checklistItems, checklistID, addItem, onReset,
+  checklistItems,
+  checklistID,
+  title,
+  addItem,
+  onReset,
+  goBack,
 }: Props) => (
   <HeaderWithContent
     header={{
-      title: 'General.Header',
+      back: goBack,
+      title: { _textFromConst: title },
       rightText: 'Checklist.Reset',
       rightAction: onReset,
     }}

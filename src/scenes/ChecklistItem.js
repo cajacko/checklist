@@ -8,11 +8,11 @@ import type { ReactRouter } from '../types/general';
 /**
  * Get the props to apply to the checklist item
  */
-const getProps = (id) => {
-  if (id === 'new') return { isNew: true };
+const getProps = (checklistItemID) => {
+  if (checklistItemID === 'new') return { isNew: true };
 
   return {
-    checklistItemID: id,
+    checklistItemID,
   };
 };
 
@@ -21,8 +21,8 @@ const getProps = (id) => {
  */
 const SceneChecklistItem = ({
   match: {
-    params: { id },
+    params: { checklistItemID },
   },
-}: ReactRouter) => <ChecklistItem {...getProps(id)} />;
+}: ReactRouter) => <ChecklistItem {...getProps(checklistItemID)} />;
 
 export default withRouter(SceneChecklistItem);

@@ -8,6 +8,7 @@ import { resetChecklist } from '../../../store/checklists/actions';
 const selector = createSelector(
   ({ checklists }, { checklistID }) => checklists.get(checklistID),
   checklist => ({
+    title: checklist.get('title'),
     checklistItems: checklist.get('checklistItems'),
   })
 );

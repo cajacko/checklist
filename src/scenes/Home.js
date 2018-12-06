@@ -1,11 +1,11 @@
 // @flow
 
 import React from 'react';
-import Checklist from '../components/Checklist/List';
+import Checklists from '../components/Checklists/List';
 
 /**
  * The home scene
  */
-const SceneHome = () => <Checklist checklistID="checklist-1" />;
+const SceneHome = () => <Checklists />;
 
 export default SceneHome;

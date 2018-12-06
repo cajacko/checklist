@@ -2,15 +2,12 @@
 
 import React, { PureComponent } from 'react';
 import withRouter from '@cajacko/lib/components/HOCs/withRouter';
-import type { ImmutableChecklistItems } from '../../../types/ChecklistItem';
+import type { ImmutableChecklists } from '../../../types/Checklist';
 import List from './List.render';
 import type { ReactRouter } from '../../../types/general';
 
 type Props = ReactRouter & {
-  checklistItems: ImmutableChecklistItems,
-  checklistID: string,
-  onReset: () => void,
-  title: string,
+  checklists: ImmutableChecklists,
 };
 
 type State = {};
@@ -19,8 +16,8 @@ type State = {};
  * Business logic for the checklist component
  */
 class ListComponent extends PureComponent<Props, State> {
-  addItem = () => {
-    this.props.history.push('/checklist-item/new');
+  addChecklist = () => {
+    this.props.history.push('/checklist/new/edit');
   };
 
   /**
@@ -29,12 +26,8 @@ class ListComponent extends PureComponent<Props, State> {
   render() {
     return (
       <List
-        checklistItems={this.props.checklistItems}
-        addItem={this.addItem}
-        checklistID={this.props.checklistID}
-        onReset={this.props.onReset}
-        goBack={this.props.history.goBack}
-        title={this.props.title}
+        checklists={this.props.checklists}
+        addChecklist={this.addChecklist}
       />
     );
   }
