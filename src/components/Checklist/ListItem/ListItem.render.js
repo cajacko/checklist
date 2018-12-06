@@ -7,13 +7,18 @@ import { CHECKBOX, CHECKBOX_O } from '@cajacko/lib/config/icons';
 import type { ReactRouter } from '../../../types/general';
 
 type Props = ReactRouter & {
-  id: string,
+  checklistID: string,
+  checklistItemID: string,
   text: string,
   checked: boolean,
   toggleChecked: (string, boolean) => void,
 };
 
-const action = (push, id) => () => push(`/checklist-item/${id}`);
+/**
+ * Redirect to the edit checklist item scene
+ */
+const action = (push, checklistID, checklistItemID) => () =>
+  push(`/checklist/${checklistID}/checklist-item/${checklistItemID}`);
 
 /**
  * A checklist item component
@@ -22,15 +27,16 @@ const ListItem = ({
   checked,
   toggleChecked,
   text,
-  id,
+  checklistID,
+  checklistItemID,
   history: { push },
   ...props
 }: Props) => (
   <CardsListItem
     leftIcon={checked ? CHECKBOX : CHECKBOX_O}
     text={{ _textFromConst: text }}
-    textAction={action(push, id)}
-    leftIconAction={toggleChecked(id, !checked)}
+    textAction={action(push, checklistID, checklistItemID)}
+    leftIconAction={toggleChecked(!checked)}
     {...props}
   />
 );

@@ -20,7 +20,7 @@ type State = {};
  */
 class ListComponent extends PureComponent<Props, State> {
   addItem = () => {
-    this.props.history.push('/checklist-item/new');
+    this.props.history.push(`/checklist/${this.props.checklistID}/checklist-item/new`);
   };
 
   /**

@@ -2,27 +2,31 @@
 
 import createReducer from '@cajacko/lib/utils/createReducer';
 import setNewOrUpdateMap from '@cajacko/lib/utils/immutable/setNewOrUpdateMap';
-import { fromJS } from 'immutable';
+import { Map } from 'immutable';
 import { SAVE_CHECKLIST_ITEM, DELETE_CHECKLIST_ITEM } from './actions';
 import { ReduxChecklistItemRecord } from '../../types/ChecklistItem';
 
-const initialState = fromJS({});
+const initialState = Map();
 
 export default createReducer(initialState, {
-  [SAVE_CHECKLIST_ITEM]: (state, {
-    id, text, dateLastModified, dateCreated,
-  }) =>
+  [SAVE_CHECKLIST_ITEM]: (
+    state,
+    {
+      checklistItemID, text, dateLastModified, dateCreated,
+    }
+  ) =>
     setNewOrUpdateMap(
       state,
-      id,
+      checklistItemID,
       dateCreated,
       dateLastModified,
       {
-        id,
+        id: checklistItemID,
         text,
         isOnline: false,
       },
       ReduxChecklistItemRecord
     ),
-  [DELETE_CHECKLIST_ITEM]: (state, { id }) => state.delete(id),
+  [DELETE_CHECKLIST_ITEM]: (state, { checklistItemID }) =>
+    state.delete(checklistItemID),
 });

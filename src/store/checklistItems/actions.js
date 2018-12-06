@@ -8,14 +8,15 @@ export const DELETE_CHECKLIST_ITEM = 'DELETE_CHECKLIST_ITEM';
 
 export const saveChecklistItem = makeActionCreator(
   SAVE_CHECKLIST_ITEM,
-  (text, id) => {
+  (text, checklistID, checklistItemID) => {
     const now = new Date().getTime();
 
     const checklistItem = {
-      id: id || uuid(),
+      checklistID,
+      checklistItemID: checklistItemID || uuid(),
       text,
       dateLastModified: now,
-      dateCreated: id ? undefined : now,
+      dateCreated: checklistItemID ? undefined : now,
     };
 
     return checklistItem;
@@ -24,5 +25,6 @@ export const saveChecklistItem = makeActionCreator(
 
 export const deleteChecklistItem = makeActionCreator(
   DELETE_CHECKLIST_ITEM,
-  'id'
+  'checklistID',
+  'checklistItemID'
 );

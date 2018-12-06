@@ -23,8 +23,9 @@ const mapStateToProps = (
 /**
  * Wrap some funcs in redux dispatch
  */
-const mapDispatchToProps = dispatch => ({
-  toggleChecked: (id, checked) => () => dispatch(setChecked(id, checked)),
+const mapDispatchToProps = (dispatch, { checklistID, checklistItemID }) => ({
+  toggleChecked: checked => () =>
+    dispatch(setChecked(checklistID, checklistItemID, checked)),
 });
 
 export default connect(

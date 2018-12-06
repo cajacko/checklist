@@ -19,12 +19,13 @@ export const mapStateToProps = selector;
 /**
  * Map the redux actions to props
  */
-const mapDispatchToProps = (dispatch, { checklistItemID }) => ({
+const mapDispatchToProps = (dispatch, { checklistItemID, checklistID }) => ({
   /**
    * On submit, dispatch the save checklist item action
    */
-  onSubmit: text => dispatch(saveChecklistItem(text, checklistItemID)),
-  onDelete: () => dispatch(deleteChecklistItem(checklistItemID)),
+  onSubmit: text =>
+    dispatch(saveChecklistItem(text, checklistID, checklistItemID)),
+  onDelete: () => dispatch(deleteChecklistItem(checklistID, checklistItemID)),
 });
 
 export default connect(

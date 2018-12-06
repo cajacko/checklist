@@ -11,6 +11,7 @@
     "Placeholder": "New task of some sort"
   },
   "Checklist": {
-    "Reset": "Reset"
+    "Reset": "Reset",
+    "Placeholder": "Title for the checklist"
   }
 }

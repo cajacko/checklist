@@ -21,8 +21,10 @@ const getProps = (checklistItemID) => {
  */
 const SceneChecklistItem = ({
   match: {
-    params: { checklistItemID },
+    params: { checklistItemID, checklistID },
   },
-}: ReactRouter) => <ChecklistItem {...getProps(checklistItemID)} />;
+}: ReactRouter) => (
+  <ChecklistItem checklistID={checklistID} {...getProps(checklistItemID)} />
+);
 
 export default withRouter(SceneChecklistItem);
