@@ -4,6 +4,9 @@ import React from 'react';
 import { createSelector } from 'reselect';
 import CardsList from '@cajacko/lib/components/Cards/List';
 import HeaderWithContent from '@cajacko/lib/components/Layout/HeaderWithContent';
+import CardsListItem from '@cajacko/lib/components/Cards/ListItem';
+import Icon from '@cajacko/lib/components/Cards/ListItem/Icon';
+import Text from '@cajacko/lib/components/Cards/ListItem/Text';
 import { PLUS } from '@cajacko/lib/config/icons';
 import ListItem from '../ListItem';
 import type { ImmutableChecklists } from '../../../types/Checklist';
@@ -38,12 +41,12 @@ const List = ({ checklists, addChecklist }: Props) => (
       cards={selector(checklists)}
       keyExtractor={id => id}
       renderItem={renderItem}
-      bottomItem={{
-        text: 'General.NewChecklist',
-        leftIcon: PLUS,
-        action: addChecklist,
-        greyedOut: true,
-      }}
+      bottomItem={() => (
+        <CardsListItem action={addChecklist}>
+          <Icon icon={PLUS} greyedOut />
+          <Text text="General.NewChecklist" greyedOut />
+        </CardsListItem>
+      )}
     />
   </HeaderWithContent>
 );

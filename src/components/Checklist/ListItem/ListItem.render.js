@@ -3,7 +3,9 @@
 import React from 'react';
 import CardsListItem from '@cajacko/lib/components/Cards/ListItem';
 import withRouter from '@cajacko/lib/components/HOCs/withRouter';
-import { CHECKBOX, CHECKBOX_O } from '@cajacko/lib/config/icons';
+import Icon from '@cajacko/lib/components/Cards/ListItem/Icon';
+import Text from '@cajacko/lib/components/Cards/ListItem/Text';
+import { CHECKBOX, CHECKBOX_O, EDIT } from '@cajacko/lib/config/icons';
 import type { ReactRouter } from '../../../types/general';
 
 type Props = ReactRouter & {
@@ -30,15 +32,19 @@ const ListItem = ({
   checklistID,
   checklistItemID,
   history: { push },
-  ...props
 }: Props) => (
-  <CardsListItem
-    leftIcon={checked ? CHECKBOX : CHECKBOX_O}
-    text={{ _textFromConst: text }}
-    textAction={action(push, checklistID, checklistItemID)}
-    leftIconAction={toggleChecked(!checked)}
-    {...props}
-  />
+  <CardsListItem>
+    <Icon
+      icon={checked ? CHECKBOX : CHECKBOX_O}
+      action={toggleChecked(!checked)}
+    />
+    <Text text={{ _textFromConst: text }} action={toggleChecked(!checked)} />
+    <Icon
+      icon={EDIT}
+      action={action(push, checklistID, checklistItemID)}
+      greyedOut
+    />
+  </CardsListItem>
 );
 
 export default withRouter(ListItem);
