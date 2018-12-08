@@ -24,7 +24,6 @@ class ListComponent extends PureComponent<Props, State> {
    * Render the component
    */
   render() {
-    logger.log(this.props);
     return (
       <List
         checklists={this.props.checklists}

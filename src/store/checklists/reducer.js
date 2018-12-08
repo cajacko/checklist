@@ -107,6 +107,16 @@ export default createReducer(initialState, {
         ReduxChecklistRecord
       )
     ),
-  [DELETE_CHECKLIST]: (state, { checklistID }) =>
-    state.deleteIn(['checklists', checklistID]),
+  [DELETE_CHECKLIST]: (state, { checklistID }) => {
+    let newState = state.deleteIn(['checklists', checklistID]);
+
+    state
+      .getIn(['checklists', checklistID, 'checklistItems'])
+      .keySeq()
+      .forEach((key) => {
+        newState = newState.deleteIn(['checklistItems', key]);
+      });
+
+    return newState;
+  },
 });
