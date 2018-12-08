@@ -23,6 +23,10 @@ class ListComponent extends PureComponent<Props, State> {
     this.props.history.push(`/checklist/${this.props.checklistID}/checklist-item/new`);
   };
 
+  edit = () => {
+    this.props.history.push(`/checklist/${this.props.checklistID}/edit`);
+  };
+
   /**
    * Render the component
    */
@@ -35,6 +39,7 @@ class ListComponent extends PureComponent<Props, State> {
         onReset={this.props.onReset}
         goBack={this.props.history.goBack}
         title={this.props.title}
+        edit={this.edit}
       />
     );
   }

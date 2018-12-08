@@ -18,6 +18,7 @@ type Props = {
   onReset: () => void,
   goBack: () => void,
   title: string,
+  edit: () => void,
 };
 
 const selector = createSelector(
@@ -42,12 +43,14 @@ const List = ({
   addItem,
   onReset,
   goBack,
+  edit,
 }: Props) => (
   <HeaderWithContent
     header={{
       back: goBack,
       title: { _textFromConst: title },
       rightText: 'Checklist.Reset',
+      titleAction: edit,
       rightAction: onReset,
     }}
   >
