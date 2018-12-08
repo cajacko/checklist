@@ -7,24 +7,23 @@ import { setChecked } from '../../../store/checklists/actions';
 /**
  * Get the checklist data from the store
  */
-const mapStateToProps = (
-  { checklistItems, checklists },
-  { checklistID, checklistItemID }
-) => ({
+const mapStateToProps = ({ checklists }, { checklistID, checklistItemID }) => ({
   checked: checklists.getIn([
+    'checklists',
     checklistID,
     'checklistItems',
     checklistItemID,
     'checked',
   ]),
-  ...checklistItems.get(checklistItemID).toJS(),
+  ...checklists.getIn(['checklistItems', checklistItemID]).toJS(),
 });
 
 /**
  * Wrap some funcs in redux dispatch
  */
-const mapDispatchToProps = dispatch => ({
-  toggleChecked: (id, checked) => () => dispatch(setChecked(id, checked)),
+const mapDispatchToProps = (dispatch, { checklistID, checklistItemID }) => ({
+  toggleChecked: checked => () =>
+    dispatch(setChecked(checklistID, checklistItemID, checked)),
 });
 
 export default connect(

@@ -677,10 +677,10 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@cajacko/lib@4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@cajacko/lib/-/lib-4.0.1.tgz#95c55670566f183b0c8761b3473672a57a2a64ae"
-  integrity sha512-Idk9GeeA/yRHpdNC595KWhbgVZ9HcIESlVg3qf4mFEq11+Rh5UzsIIWznuQ3cH88aA2rX/Gi8SXwz6LwDpcxAA==
+"@cajacko/lib@5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@cajacko/lib/-/lib-5.0.3.tgz#553b276a77f9afc704d0d9e655131895af0eb18b"
+  integrity sha512-nsOgrCo6kpLNiuDBxdd4kI3GlRKgXjiEanbR5fyj9yNiuzoQClNyUtnH1ej3yWV9aGzuFU3yVPuIrpSlJUONPA==
   dependencies:
     apollo-server-express "2.0.4"
     babel-cli "6.26.0"

@@ -6,11 +6,13 @@ import ChecklistItem from './ChecklistItem.component';
 import {
   saveChecklistItem,
   deleteChecklistItem,
-} from '../../store/checklistItems/actions';
+} from '../../store/checklists/actions';
 
 const selector = createSelector(
-  ({ checklistItems }, { checklistItemID, isNew }) =>
-    (isNew || !checklistItemID ? 'IS_NEW' : checklistItems.get(checklistItemID)),
+  ({ checklists }, { checklistItemID, isNew }) =>
+    (isNew || !checklistItemID
+      ? 'IS_NEW'
+      : checklists.getIn(['checklistItems', checklistItemID])),
   checklistItem => (checklistItem === 'IS_NEW' ? {} : checklistItem.toJS())
 );
 
@@ -19,12 +21,13 @@ export const mapStateToProps = selector;
 /**
  * Map the redux actions to props
  */
-const mapDispatchToProps = (dispatch, { checklistItemID }) => ({
+const mapDispatchToProps = (dispatch, { checklistItemID, checklistID }) => ({
   /**
    * On submit, dispatch the save checklist item action
    */
-  onSubmit: text => dispatch(saveChecklistItem(text, checklistItemID)),
-  onDelete: () => dispatch(deleteChecklistItem(checklistItemID)),
+  onSubmit: text =>
+    dispatch(saveChecklistItem(text, checklistID, checklistItemID)),
+  onDelete: () => dispatch(deleteChecklistItem(checklistID, checklistItemID)),
 });
 
 export default connect(
