@@ -1,29 +1,57 @@
 // @flow
 
 import createReducer from '@cajacko/lib/utils/createReducer';
-import { Map } from 'immutable';
+import { Map, fromJS } from 'immutable';
 import setNewOrUpdateMap from '@cajacko/lib/utils/immutable/setNewOrUpdateMap';
-import {
-  SAVE_CHECKLIST_ITEM,
-  DELETE_CHECKLIST_ITEM,
-} from '../checklistItems/actions';
 import {
   SET_CHECKED,
   RESET_CHECKLIST,
   SAVE_CHECKLIST,
   DELETE_CHECKLIST,
+  SAVE_CHECKLIST_ITEM,
+  DELETE_CHECKLIST_ITEM,
 } from './actions';
 import { ReduxChecklistRecord } from '../../types/Checklist';
+import { ReduxChecklistItemRecord } from '../../types/ChecklistItem';
 
-const initialState = Map();
+const initialState = fromJS({
+  checklists: Map(),
+  checklistItems: Map(),
+});
 
 export default createReducer(initialState, {
-  [SAVE_CHECKLIST_ITEM]: (state, { checklistItemID, checklistID }) => {
-    const location = [checklistID, 'checklistItems', checklistItemID];
+  [SAVE_CHECKLIST_ITEM]: (
+    state,
+    {
+      checklistItemID, checklistID, dateCreated, dateLastModified, text,
+    }
+  ) => {
+    const newState = state.set(
+      'checklistItems',
+      setNewOrUpdateMap(
+        state.get('checklistItems'),
+        checklistItemID,
+        dateCreated,
+        dateLastModified,
+        {
+          id: checklistItemID,
+          text,
+          isOnline: false,
+        },
+        ReduxChecklistItemRecord
+      )
+    );
 
-    if (state.hasIn(location)) return state;
+    const location = [
+      'checklists',
+      checklistID,
+      'checklistItems',
+      checklistItemID,
+    ];
 
-    return state.setIn(
+    if (newState.hasIn(location)) return newState;
+
+    return newState.setIn(
       location,
       Map({
         checked: false,
@@ -31,20 +59,27 @@ export default createReducer(initialState, {
     );
   },
   [DELETE_CHECKLIST_ITEM]: (state, { checklistItemID, checklistID }) => {
-    const location = [checklistID, 'checklistItems', checklistItemID];
+    const newState = state.deleteIn(['checklistItems', checklistItemID]);
+
+    const location = [
+      'checklists',
+      checklistID,
+      'checklistItems',
+      checklistItemID,
+    ];
 
     // Do nothing if the checklist does not have it
-    if (!state.hasIn(location)) return state;
+    if (!newState.hasIn(location)) return newState;
 
-    return state.deleteIn(location);
+    return newState.deleteIn(location);
   },
   [SET_CHECKED]: (state, { checklistItemID, checklistID, checked }) =>
     state.setIn(
-      [checklistID, 'checklistItems', checklistItemID, 'checked'],
+      ['checklists', checklistID, 'checklistItems', checklistItemID, 'checked'],
       checked
     ),
   [RESET_CHECKLIST]: (state, { checklistID }) => {
-    const location = [checklistID, 'checklistItems'];
+    const location = ['checklists', checklistID, 'checklistItems'];
     let checklistItems = state.getIn(location);
 
     checklistItems = checklistItems.map(val => val.set('checked', false));
@@ -57,17 +92,21 @@ export default createReducer(initialState, {
       checklistID, title, dateLastModified, dateCreated,
     }
   ) =>
-    setNewOrUpdateMap(
-      state,
-      checklistID,
-      dateCreated,
-      dateLastModified,
-      {
-        id: checklistID,
-        title,
-        isOnline: false,
-      },
-      ReduxChecklistRecord
+    state.set(
+      'checklists',
+      setNewOrUpdateMap(
+        state.get('checklists'),
+        checklistID,
+        dateCreated,
+        dateLastModified,
+        {
+          id: checklistID,
+          title,
+          isOnline: false,
+        },
+        ReduxChecklistRecord
+      )
     ),
-  [DELETE_CHECKLIST]: (state, { checklistID }) => state.delete(checklistID),
+  [DELETE_CHECKLIST]: (state, { checklistID }) =>
+    state.deleteIn(['checklists', checklistID]),
 });

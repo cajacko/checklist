@@ -10,7 +10,9 @@ import {
 
 const selector = createSelector(
   ({ checklists }, { checklistID, isNew }) =>
-    (isNew || !checklistID ? 'IS_NEW' : checklists.get(checklistID)),
+    (isNew || !checklistID
+      ? 'IS_NEW'
+      : checklists.getIn(['checklists', checklistID])),
   checklists => (checklists === 'IS_NEW' ? {} : checklists.toJS())
 );
 

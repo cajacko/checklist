@@ -6,11 +6,13 @@ import ChecklistItem from './ChecklistItem.component';
 import {
   saveChecklistItem,
   deleteChecklistItem,
-} from '../../store/checklistItems/actions';
+} from '../../store/checklists/actions';
 
 const selector = createSelector(
-  ({ checklistItems }, { checklistItemID, isNew }) =>
-    (isNew || !checklistItemID ? 'IS_NEW' : checklistItems.get(checklistItemID)),
+  ({ checklists }, { checklistItemID, isNew }) =>
+    (isNew || !checklistItemID
+      ? 'IS_NEW'
+      : checklists.getIn(['checklistItems', checklistItemID])),
   checklistItem => (checklistItem === 'IS_NEW' ? {} : checklistItem.toJS())
 );
 

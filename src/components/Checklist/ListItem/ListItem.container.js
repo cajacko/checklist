@@ -7,17 +7,15 @@ import { setChecked } from '../../../store/checklists/actions';
 /**
  * Get the checklist data from the store
  */
-const mapStateToProps = (
-  { checklistItems, checklists },
-  { checklistID, checklistItemID }
-) => ({
+const mapStateToProps = ({ checklists }, { checklistID, checklistItemID }) => ({
   checked: checklists.getIn([
+    'checklists',
     checklistID,
     'checklistItems',
     checklistItemID,
     'checked',
   ]),
-  ...checklistItems.get(checklistItemID).toJS(),
+  ...checklists.getIn(['checklistItems', checklistItemID]).toJS(),
 });
 
 /**

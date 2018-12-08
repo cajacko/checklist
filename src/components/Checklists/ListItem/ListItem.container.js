@@ -5,7 +5,8 @@ import { createSelector } from 'reselect';
 import ListItem from './ListItem.render';
 
 const selector = createSelector(
-  ({ checklists }, { checklistID }) => checklists.get(checklistID),
+  ({ checklists }, { checklistID }) =>
+    checklists.getIn(['checklists', checklistID]),
   checklist => checklist.toJS()
 );
 

@@ -6,7 +6,8 @@ import List from './List.component';
 import { resetChecklist } from '../../../store/checklists/actions';
 
 const selector = createSelector(
-  ({ checklists }, { checklistID }) => checklists.get(checklistID),
+  ({ checklists }, { checklistID }) =>
+    checklists.getIn(['checklists', checklistID]),
   checklist => ({
     title: checklist.get('title'),
     checklistItems: checklist.get('checklistItems'),
