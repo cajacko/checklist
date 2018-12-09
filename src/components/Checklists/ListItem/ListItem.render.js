@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import CardsListItem from '@cajacko/lib/components/Cards/ListItem';
 import withRouter from '@cajacko/lib/components/HOCs/withRouter';
 import { EDIT } from '@cajacko/lib/config/icons';
@@ -28,8 +28,16 @@ const edit = (push, id) => () => push(`/checklist/${id}/edit`);
  */
 const ListItem = ({ title, id, history: { push } }: Props) => (
   <CardsListItem>
-    <Text text={{ _textFromConst: title }} action={goTo(push, id)} />
-    <Icon icon={EDIT} action={edit(push, id)} greyedOut />
+    {({ spacing }) => (
+      <Fragment>
+        <Text
+          text={{ _textFromConst: title }}
+          action={goTo(push, id)}
+          innerStyles={{ paddingLeft: spacing }}
+        />
+        <Icon icon={EDIT} action={edit(push, id)} greyedOut />
+      </Fragment>
+    )}
   </CardsListItem>
 );
 
