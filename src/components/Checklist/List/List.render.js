@@ -55,6 +55,7 @@ const List = ({
     }}
   >
     <CardsList
+      bottomPadding
       cards={selector(checklistItems)}
       keyExtractor={id => id}
       renderItem={renderItem(checklistID)}

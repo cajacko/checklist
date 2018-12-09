@@ -31,6 +31,7 @@ const List = ({ checklists, addChecklist }: Props) => (
     }}
   >
     <CardsList
+      bottomPadding
       cards={checklists}
       keyExtractor={id => id}
       renderItem={renderItem}
