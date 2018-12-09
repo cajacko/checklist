@@ -52,6 +52,7 @@ const List = ({
       rightText: 'Checklist.Reset',
       titleAction: edit,
       rightAction: onReset,
+      horizontalMargin: 50,
     }}
   >
     <CardsList
