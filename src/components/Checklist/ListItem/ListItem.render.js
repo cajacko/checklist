@@ -37,8 +37,13 @@ const ListItem = ({
     <Icon
       icon={checked ? CHECKBOX : CHECKBOX_O}
       action={toggleChecked(!checked)}
+      greyedOut={checked}
     />
-    <Text text={{ _textFromConst: text }} action={toggleChecked(!checked)} />
+    <Text
+      text={{ _textFromConst: text }}
+      action={toggleChecked(!checked)}
+      greyedOut={checked}
+    />
     <Icon
       icon={EDIT}
       action={action(push, checklistID, checklistItemID)}
