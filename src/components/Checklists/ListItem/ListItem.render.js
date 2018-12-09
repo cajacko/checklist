@@ -27,17 +27,9 @@ const edit = (push, id) => () => push(`/checklist/${id}/edit`);
  * A checklist item component
  */
 const ListItem = ({ title, id, history: { push } }: Props) => (
-  <CardsListItem>
-    {({ spacing }) => (
-      <Fragment>
-        <Text
-          text={{ _textFromConst: title }}
-          action={goTo(push, id)}
-          innerStyles={{ paddingLeft: spacing }}
-        />
-        <Icon icon={EDIT} action={edit(push, id)} greyedOut />
-      </Fragment>
-    )}
+  <CardsListItem paddingLeft>
+    <Text text={{ _textFromConst: title }} action={goTo(push, id)} />
+    <Icon icon={EDIT} action={edit(push, id)} greyedOut />
   </CardsListItem>
 );
 
