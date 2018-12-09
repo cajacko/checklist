@@ -20,6 +20,7 @@ const Edit = ({
   text, onChange, onSubmit, goBack, onDelete,
 }: Props) => (
   <HeaderWithContent
+    hasPadding
     header={{
       back: goBack,
       useCloseIconForBack: true,
