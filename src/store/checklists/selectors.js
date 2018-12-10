@@ -33,8 +33,17 @@ export const sortChecklistItems = createSelector(
   }),
   ({ checklistItems, checklistItemsByID }) =>
     checklistItems.sort((a, b) => {
-      const checklistItemA = checklistItemsByID.get(a.get('id'));
-      const checklistItemB = checklistItemsByID.get(b.get('id'));
+      const aID = a.get('id');
+      const bID = b.get('id');
+
+      // This handles if redux data is old and does not have ID's on
+      // checklist items
+      if (!aID && bID) return 1;
+      if (aID && !bID) return -1;
+      if (!aID && !bID) return 0;
+
+      const checklistItemA = checklistItemsByID.get(aID);
+      const checklistItemB = checklistItemsByID.get(bID);
 
       return sort(true)(checklistItemA, checklistItemB);
     })
