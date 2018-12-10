@@ -677,10 +677,10 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@cajacko/lib@5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@cajacko/lib/-/lib-5.0.3.tgz#553b276a77f9afc704d0d9e655131895af0eb18b"
-  integrity sha512-nsOgrCo6kpLNiuDBxdd4kI3GlRKgXjiEanbR5fyj9yNiuzoQClNyUtnH1ej3yWV9aGzuFU3yVPuIrpSlJUONPA==
+"@cajacko/lib@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@cajacko/lib/-/lib-5.1.0.tgz#155cd552515302d2fa317330901b132ee3f89a92"
+  integrity sha512-mhTFxEOk1dCHdL7LBhCJ/886ZuZDlALwTvcaCHKb6Cij+7qhrgjQY6+yTb+ThK7nHFdU0JAoagFFr/pVVQjAng==
   dependencies:
     apollo-server-express "2.0.4"
     babel-cli "6.26.0"
@@ -721,10 +721,10 @@
     reselect "3.0.1"
     styled-components "3.3.3"
 
-"@cajacko/template-utils@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@cajacko/template-utils/-/template-utils-1.1.0.tgz#c97ac560ed8cfc379c85246021c8fbcefd66acd7"
-  integrity sha512-NjRhZxbbFg1KTZtF2M/j4Nrpy6bjeQZofdho7Ax2x/UzTfLQWt/gh+DwqOTxd7udFo3XCKUp9zdu3U/qJx+MQg==
+"@cajacko/template-utils@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@cajacko/template-utils/-/template-utils-1.2.0.tgz#ebb127e99953a2eda9bcc7747abb8bea60fc78c1"
+  integrity sha512-aVWXf61xcadBMwBQtJS22tDwkS/CeQ2u3IrAEU8UrO70NMsi6vj1JcJ+sMdZE9BuEHyDyJCSaSzJXgP8p4Qqig==
   dependencies:
     chalk "^2.4.1"
     commander "^2.17.1"
@@ -740,13 +740,13 @@
     simple-git "^1.96.0"
     watch "^1.0.2"
 
-"@cajacko/template@1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@cajacko/template/-/template-1.1.2.tgz#c131d437c34ced7b42465ccba5a13987ea1766fb"
-  integrity sha512-xxCzvsXkHV2zVhpVMC+gtSIu458/ALxmkvgYmlYgVxdf6/Ty6KkIP5Dn2nZMA4CxuTGMTtnnj3FwZQT5tGLLRQ==
+"@cajacko/template@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@cajacko/template/-/template-1.2.0.tgz#765d0002182739474ffb468f6f0d7d5d3da947b9"
+  integrity sha512-jKD2z1CljE+kjRJKhO1m5dro39HPo6gaOrp9i3ywyikDqws7PQ8kGSGGk2Fz3SIPJiiphcUn2TthfVGcDYRVJQ==
   dependencies:
     "@babel/polyfill" "^7.0.0"
-    "@cajacko/template-utils" "^1.1.0"
+    "@cajacko/template-utils" "^1.2.0"
     babel-cli "^6.26.0"
     babel-eslint "8.2.2"
     babel-plugin-transform-object-rest-spread "^6.26.0"
@@ -3026,9 +3026,9 @@ caniuse-lite@^1.0.30000792:
   integrity sha512-qqj0CL1xANgg6iDOybiPTIxtsmAnfIky9mBC35qgWrnK4WwmhqfpmkDYMYgwXJ8LRZ3/2jXlCntulO8mBaAgSg==
 
 caniuse-lite@^1.0.30000844:
-  version "1.0.30000916"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000916.tgz#3428d3f529f0a7b2bfaaec65e796037bdd433aab"
-  integrity sha512-D6J9jloPm2MPkg0PXcODLMQAJKkeixKO9xhqTUMvtd44MtTYMyyDXPQ2Lk9IgBq5FH0frwiPa/N/w8ncQf7kIQ==
+  version "1.0.30000918"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000918.tgz#6288f79da3c5c8b45e502f47ad8f3eb91f1379a9"
+  integrity sha512-CAZ9QXGViBvhHnmIHhsTPSWFBujDaelKnUj7wwImbyQRxmXynYqKGi3UaZTSz9MoVh+1EVxOS/DFIkrJYgR3aw==
 
 capture-exit@^1.2.0:
   version "1.2.0"

@@ -3,15 +3,14 @@
 import React, { Component } from 'react';
 import withRouter from '@cajacko/lib/components/HOCs/withRouter';
 import Edit from './Edit.render';
-import type { Checklist } from '../../../types/Checklist';
 import type { ReactRouter } from '../../../types/general';
 
-type Props = ReactRouter &
-  Checklist & {
-    isNew?: boolean,
-    onSubmit: string => void,
-    onDelete: () => void,
-  };
+type Props = ReactRouter & {
+  title: ?string,
+  isNew?: boolean,
+  onSubmit: string => void,
+  onDelete: () => void,
+};
 
 type State = {
   title: string,
@@ -28,7 +27,7 @@ class EditComponent extends Component<Props, State> {
     super(props);
 
     this.state = {
-      title: props.isNew ? '' : props.title,
+      title: props.title || '',
     };
   }
 

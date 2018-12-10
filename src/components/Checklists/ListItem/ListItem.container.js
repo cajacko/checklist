@@ -1,18 +1,13 @@
 // @flow
 
 import { connect } from '@cajacko/lib/lib/react-redux';
-import { createSelector } from 'reselect';
 import ListItem from './ListItem.render';
-
-const selector = createSelector(
-  ({ checklists }, { checklistID }) =>
-    checklists.getIn(['checklists', checklistID]),
-  checklist => checklist.toJS()
-);
 
 /**
  * Get the checklist data from the store
  */
-const mapStateToProps = selector;
+const mapStateToProps = ({ checklists }, { checklistID }) => ({
+  title: checklists.getIn(['checklists', checklistID, 'title']),
+});
 
 export default connect(mapStateToProps)(ListItem);

@@ -24,6 +24,7 @@ const ChecklistItem = ({
   onDelete,
 }: Props) => (
   <HeaderWithContent
+    hasPadding
     header={{
       back: goBack,
       useCloseIconForBack: true,

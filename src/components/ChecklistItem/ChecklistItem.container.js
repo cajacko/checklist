@@ -1,6 +1,5 @@
 // @flow
 
-import { createSelector } from 'reselect';
 import { connect } from '@cajacko/lib/lib/react-redux';
 import ChecklistItem from './ChecklistItem.component';
 import {
@@ -8,15 +7,14 @@ import {
   deleteChecklistItem,
 } from '../../store/checklists/actions';
 
-const selector = createSelector(
-  ({ checklists }, { checklistItemID, isNew }) =>
-    (isNew || !checklistItemID
-      ? 'IS_NEW'
-      : checklists.getIn(['checklistItems', checklistItemID])),
-  checklistItem => (checklistItem === 'IS_NEW' ? {} : checklistItem.toJS())
-);
-
-export const mapStateToProps = selector;
+/**
+ * Get the checklist item text from the store
+ */
+const mapStateToProps = ({ checklists }, { checklistItemID, isNew }) => ({
+  text: isNew
+    ? ''
+    : checklists.getIn(['checklistItems', checklistItemID, 'text']),
+});
 
 /**
  * Map the redux actions to props

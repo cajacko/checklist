@@ -54,6 +54,7 @@ export default createReducer(initialState, {
     return newState.setIn(
       location,
       Map({
+        id: checklistItemID,
         checked: false,
       })
     );

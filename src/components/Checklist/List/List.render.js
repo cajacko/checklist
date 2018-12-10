@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react';
-import { createSelector } from 'reselect';
 import CardsList from '@cajacko/lib/components/Cards/List';
 import HeaderWithContent from '@cajacko/lib/components/Layout/HeaderWithContent';
 import CardsListItem from '@cajacko/lib/components/Cards/ListItem';
@@ -9,10 +8,9 @@ import Icon from '@cajacko/lib/components/Cards/ListItem/Icon';
 import Text from '@cajacko/lib/components/Cards/ListItem/Text';
 import { PLUS } from '@cajacko/lib/config/icons';
 import ListItem from '../ListItem';
-import type { ImmutableChecklistItems } from '../../../types/ChecklistItem';
 
 type Props = {
-  checklistItems: ImmutableChecklistItems,
+  checklistItems: Array<string>,
   addItem: () => void,
   checklistID: string,
   onReset: () => void,
@@ -20,11 +18,6 @@ type Props = {
   title: string,
   edit: () => void,
 };
-
-const selector = createSelector(
-  checklistItems => checklistItems,
-  checklistItems => Object.keys(checklistItems.toJS())
-);
 
 /**
  * Render an individual list item
@@ -52,10 +45,12 @@ const List = ({
       rightText: 'Checklist.Reset',
       titleAction: edit,
       rightAction: onReset,
+      horizontalMargin: 50,
     }}
   >
     <CardsList
-      cards={selector(checklistItems)}
+      bottomPadding
+      cards={checklistItems}
       keyExtractor={id => id}
       renderItem={renderItem(checklistID)}
       bottomItem={() => (

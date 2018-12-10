@@ -15,7 +15,7 @@ const mapStateToProps = ({ checklists }, { checklistID, checklistItemID }) => ({
     checklistItemID,
     'checked',
   ]),
-  ...checklists.getIn(['checklistItems', checklistItemID]).toJS(),
+  text: checklists.getIn(['checklistItems', checklistItemID, 'text']),
 });
 
 /**

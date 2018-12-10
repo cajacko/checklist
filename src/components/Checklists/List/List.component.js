@@ -2,12 +2,11 @@
 
 import React, { PureComponent } from 'react';
 import withRouter from '@cajacko/lib/components/HOCs/withRouter';
-import type { ImmutableChecklists } from '../../../types/Checklist';
 import List from './List.render';
 import type { ReactRouter } from '../../../types/general';
 
 type Props = ReactRouter & {
-  checklists: ImmutableChecklists,
+  checklists: Array<string>,
 };
 
 type State = {};
