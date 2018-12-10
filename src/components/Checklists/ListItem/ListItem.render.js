@@ -9,7 +9,7 @@ import Icon from '@cajacko/lib/components/Cards/ListItem/Icon';
 import type { ReactRouter } from '../../../types/general';
 
 type Props = ReactRouter & {
-  id: string,
+  checklistID: string,
   title: string,
 };
 
@@ -26,10 +26,10 @@ const edit = (push, id) => () => push(`/checklist/${id}/edit`);
 /**
  * A checklist item component
  */
-const ListItem = ({ title, id, history: { push } }: Props) => (
+const ListItem = ({ title, checklistID, history: { push } }: Props) => (
   <CardsListItem paddingLeft>
-    <Text text={{ _textFromConst: title }} action={goTo(push, id)} />
-    <Icon icon={EDIT} action={edit(push, id)} greyedOut />
+    <Text text={{ _textFromConst: title }} action={goTo(push, checklistID)} />
+    <Icon icon={EDIT} action={edit(push, checklistID)} greyedOut />
   </CardsListItem>
 );
 

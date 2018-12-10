@@ -3,15 +3,14 @@
 import React, { Component } from 'react';
 import withRouter from '@cajacko/lib/components/HOCs/withRouter';
 import ChecklistItem from './ChecklistItem.render';
-import type { ChecklistItem as ChecklistItemType } from '../../types/ChecklistItem';
 import type { ReactRouter } from '../../types/general';
 
-type Props = ReactRouter &
-  ChecklistItemType & {
-    isNew?: boolean,
-    onSubmit: string => void,
-    onDelete: () => void,
-  };
+type Props = ReactRouter & {
+  text: ?string,
+  isNew?: boolean,
+  onSubmit: string => void,
+  onDelete: () => void,
+};
 
 type State = {
   text: string,
@@ -28,7 +27,7 @@ class ChecklistItemComponent extends Component<Props, State> {
     super(props);
 
     this.state = {
-      text: props.isNew ? '' : props.text,
+      text: props.text || '',
     };
   }
 

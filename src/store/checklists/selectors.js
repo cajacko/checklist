@@ -23,28 +23,34 @@ const sort = forward => (a, b) => {
 
 export const sortChecklists = createSelector(
   checklists => checklists,
-  checklists => checklists.sort(sort(true))
+  checklists => Object.keys(checklists.sort(sort(true)).toJS())
 );
 
+/**
+ * This is a bit more complicated as we need to get the whole checklistItem in
+ * order to get the dates to sort by
+ */
 export const sortChecklistItems = createSelector(
   (checklistItems, checklistItemsByID) => ({
     checklistItems,
     checklistItemsByID,
   }),
   ({ checklistItems, checklistItemsByID }) =>
-    checklistItems.sort((a, b) => {
-      const aID = a.get('id');
-      const bID = b.get('id');
+    Object.keys(checklistItems
+      .sort((a, b) => {
+        const aID = a.get('id');
+        const bID = b.get('id');
 
-      // This handles if redux data is old and does not have ID's on
-      // checklist items
-      if (!aID && bID) return 1;
-      if (aID && !bID) return -1;
-      if (!aID && !bID) return 0;
+        // This handles if redux data is old and does not have ID's on
+        // checklist items
+        if (!aID && bID) return 1;
+        if (aID && !bID) return -1;
+        if (!aID && !bID) return 0;
 
-      const checklistItemA = checklistItemsByID.get(aID);
-      const checklistItemB = checklistItemsByID.get(bID);
+        const checklistItemA = checklistItemsByID.get(aID);
+        const checklistItemB = checklistItemsByID.get(bID);
 
-      return sort(true)(checklistItemA, checklistItemB);
-    })
+        return sort(true)(checklistItemA, checklistItemB);
+      })
+      .toJS())
 );
