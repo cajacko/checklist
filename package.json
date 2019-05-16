@@ -2,5 +2,20 @@
   "name": "checklist",
   "version": "0.1.0",
   "description": "A persistent checklist application built with React Native.",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run build && npm run checklist",
+    "watch": "npm run build -- -w",
+    "checklist": "node build/index.js",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "ink": "^2.1.1",
+    "react": "^16.8.6",
+    "typescript": "^3.4.5"
+  },
+  "devDependencies": {
+    "@types/ink": "^0.5.1",
+    "@types/react": "^16.8.17"
+  }
 }
