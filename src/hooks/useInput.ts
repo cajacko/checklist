@@ -2,7 +2,12 @@ import * as React from "react";
 
 const ARROW_UP = "\u001B[A";
 const ARROW_DOWN = "\u001B[B";
+const ARROW_LEFT = "\u001B[D";
+const ARROW_RIGHT = "\u001B[C";
 const ENTER = "\r";
+const CTRL_C = "\x03";
+const BACKSPACE = "\x08";
+const DELETE = "\x7F";
 
 interface IProps {
   suggestions?: string[];
@@ -10,17 +15,17 @@ interface IProps {
   onChangeValue?: (value: string | null) => void;
 }
 
+type Suggestions = Array<null | string> | null;
+
 const useInput = (
   stdin: NodeJS.ReadStream,
   setRawMode: NodeJS.ReadStream["setRawMode"],
   { onSubmit, onChangeValue, ...props }: IProps
 ) => {
-  const [value] = React.useState("");
+  const [value, setValue] = React.useState("");
   const [selectedSuggestion, setSelectedSuggestion] = React.useState(0);
 
-  let suggestions: Array<null | string> | null = props.suggestions
-    ? [null]
-    : null;
+  let suggestions: Suggestions = props.suggestions ? [null] : null;
 
   let displayValue = value;
 
@@ -37,26 +42,38 @@ const useInput = (
     if (setRawMode) setRawMode(true);
 
     const handleInput = (data: any) => {
-      switch (String(data)) {
-        case "k":
+      if (!mounted) return;
+
+      const s = String(data);
+
+      switch (s) {
         case ARROW_UP: {
-          if (!suggestions) break;
+          if (!suggestions) return;
 
-          let newSelection = selectedSuggestion - 1;
-          if (newSelection < 0) newSelection = suggestions.length - 1;
+          setSelectedSuggestion(prev => {
+            if (!suggestions) return prev;
 
-          setSelectedSuggestion(newSelection);
+            let newSelection = prev - 1;
+            if (newSelection < 0) newSelection = suggestions.length - 1;
+
+            return newSelection;
+          });
+
           break;
         }
 
-        case "j":
         case ARROW_DOWN: {
-          if (!suggestions) break;
+          if (!suggestions) return;
 
-          let newSelection = selectedSuggestion + 1;
-          if (newSelection >= suggestions.length) newSelection = 0;
+          setSelectedSuggestion(prev => {
+            if (!suggestions) return prev;
 
-          setSelectedSuggestion(newSelection);
+            let newSelection = prev + 1;
+            if (newSelection >= suggestions.length) newSelection = 0;
+
+            return newSelection;
+          });
+
           break;
         }
 
@@ -64,8 +81,17 @@ const useInput = (
           if (onSubmit) onSubmit(displayValue);
           break;
 
+        case BACKSPACE:
+        case DELETE:
+          setValue(prevValue => prevValue.substr(0, prevValue.length - 1));
+          break;
+
+        case CTRL_C:
+          break;
+
         default:
-          if (mounted) setSelectedSuggestion(0);
+          setSelectedSuggestion(0);
+          setValue(prevValue => prevValue + s);
           break;
       }
     };
