@@ -1,16 +1,19 @@
 import * as React from "react";
 import Input from "./Input";
+import { Set } from "../hooks/useCommit";
 
 interface IProps {
-  setMessage: () => void;
+  setMessage: Set;
 }
 
-const onSubmit = (value: string) => {
-  console.log(value);
-};
-
 const Step = (props: IProps) => (
-  <Input title="Title" suggestions={["1", "2", "3", "4"]} onSubmit={onSubmit} />
+  <Input
+    title="Title"
+    suggestions={["1", "2", "3", "4"]}
+    onChangeValue={value => {
+      props.setMessage("title", value);
+    }}
+  />
 );
 
 export default Step;

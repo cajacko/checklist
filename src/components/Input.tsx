@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Box, StdinContext } from "ink";
+import TextInput from "ink-text-input";
 import useInput from "../hooks/useInput";
 
 interface IProps {
@@ -18,7 +19,7 @@ interface IStdinProps {
 interface IAllProps extends IProps, IStdinProps {}
 
 const Input = ({ stdin, setRawMode, title, helpText, ...props }: IAllProps) => {
-  const { value, suggestions, selectedSuggestion } = useInput(
+  const { value, suggestions, selectedSuggestion, setValue } = useInput(
     stdin,
     setRawMode,
     props
@@ -28,7 +29,9 @@ const Input = ({ stdin, setRawMode, title, helpText, ...props }: IAllProps) => {
     <Box flexDirection="column">
       <Box>{title}</Box>
       {helpText && <Box>{helpText}</Box>}
-      <Box marginTop={1}>> {value || ""}</Box>
+      <Box marginTop={1}>
+        > <TextInput value={value} onChange={setValue} />
+      </Box>
       {!!suggestions && suggestions.length > 1 && (
         <Box flexDirection="column" marginTop={1}>
           <Box>Suggestions:</Box>

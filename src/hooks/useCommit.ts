@@ -1,11 +1,17 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const MIN_MESSAGE_LENGTH = 10;
 
 interface IReference {
-  key: 'Related To' | 'Fixes' | 'Original Branch' | string;
+  key: "Related To" | "Fixes" | "Original Branch" | string;
   value: string;
 }
+
+type Params =
+  | ["emoji" | "type" | "scope" | "title" | "description", string | null]
+  | ["references", IReference[]];
+
+export type Set = (...params: Params) => void;
 
 const buildMessage = (
   emoji: string | null,
@@ -15,7 +21,7 @@ const buildMessage = (
   description: string | null,
   references: IReference[]
 ): string => {
-  let message = '';
+  let message = "";
 
   if (emoji) message = `${emoji} ${message}`;
   if (type) message = `${message}${type}`;
@@ -52,23 +58,48 @@ const getError = (
 };
 
 const useCommit = () => {
-  const [emoji] = useState('🐛');
-  const [type] = useState('feat');
-  const [scope] = useState('lerna');
-  const [title] = useState('Do something fun');
-  const [description] = useState('Oh yeah buddy');
-  const [references] = useState([
+  const [emoji, setEmoji] = useState<string | null>("🐛");
+  const [type, setType] = useState<string | null>("feat");
+  const [scope, setScope] = useState<string | null>("lerna");
+  const [title, setTitle] = useState<string | null>("Do something fun");
+  const [description, setDescription] = useState<string | null>(
+    "Oh yeah buddy"
+  );
+  const [references, setReferences] = useState<IReference[]>([
     {
-      key: 'Original Branch',
-      value: 'master'
+      key: "Original Branch",
+      value: "master"
     },
     {
-      key: 'Related To',
-      value: '#GEN-123'
+      key: "Related To",
+      value: "#GEN-123"
     }
   ]);
 
-  const set = () => {};
+  const set: Set = (key, value: any) => {
+    switch (key) {
+      case "description":
+        setDescription(value);
+        break;
+      case "emoji":
+        setEmoji(value);
+        break;
+      case "type":
+        setType(value);
+        break;
+      case "title":
+        setTitle(value);
+        break;
+      case "scope":
+        setScope(value);
+        break;
+      case "references":
+        setReferences(value);
+        break;
+      default:
+        break;
+    }
+  };
 
   const message = buildMessage(
     emoji,

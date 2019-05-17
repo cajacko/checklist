@@ -2,12 +2,7 @@ import * as React from "react";
 
 const ARROW_UP = "\u001B[A";
 const ARROW_DOWN = "\u001B[B";
-const ARROW_LEFT = "\u001B[D";
-const ARROW_RIGHT = "\u001B[C";
 const ENTER = "\r";
-const CTRL_C = "\x03";
-const BACKSPACE = "\x08";
-const DELETE = "\x7F";
 
 interface IProps {
   suggestions?: string[];
@@ -81,22 +76,15 @@ const useInput = (
           if (onSubmit) onSubmit(displayValue);
           break;
 
-        case BACKSPACE:
-        case DELETE:
-          setValue(prevValue => prevValue.substr(0, prevValue.length - 1));
-          break;
-
-        case CTRL_C:
-          break;
-
         default:
           setSelectedSuggestion(0);
-          setValue(prevValue => prevValue + s);
           break;
       }
     };
 
     stdin.on("data", handleInput);
+
+    if (onChangeValue) onChangeValue(displayValue);
 
     return () => {
       mounted = false;
@@ -108,7 +96,9 @@ const useInput = (
   return {
     value: displayValue,
     suggestions,
-    selectedSuggestion
+    selectedSuggestion,
+    setValue,
+    onSubmit
   };
 };
 

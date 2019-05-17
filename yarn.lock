@@ -67,7 +67,7 @@ auto-bind@^2.0.0:
   dependencies:
     "@types/react" "^16.8.12"
 
-chalk@^2.4.1:
+chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
   integrity sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
@@ -127,6 +127,13 @@ has-flag@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-3.0.0.tgz#b5d454dc2199ae225699f3467e5a07f3b955bafd"
   integrity sha1-tdRU3CGZriJWmfNGfloH87lVuv0=
+
+ink-text-input@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/ink-text-input/-/ink-text-input-3.1.1.tgz#bfdaed07e32263189a75e1708a9ca6fd2086b88b"
+  integrity sha512-CfdDyafgT1EjlrrmvoHmnDP2yfNZwIBiy/WZMAA1RNiZBiJIoOsTK9qz2EUH3AJDmeJj/kDy/nybynnsu0MODQ==
+  dependencies:
+    prop-types "^15.5.10"
 
 ink@^2.1.1:
   version "2.1.1"
@@ -207,7 +214,7 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-prop-types@^15.6.2:
+prop-types@^15.5.10, prop-types@^15.6.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
